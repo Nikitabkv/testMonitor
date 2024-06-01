@@ -15,7 +15,8 @@ header {
 .title {
   font-size: 28px;
   font-weight: 400;
-  flex: 0 0 278px
+  flex: 1 1 278px;
+  white-space: nowrap;
 }
 
 .nav__wrapper {

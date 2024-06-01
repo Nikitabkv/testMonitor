@@ -1,0 +1,96 @@
+<div class="substations">
+  <header>
+    <div class="nav_wrapper">
+      <button class="burger center">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_20_1908" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+            <rect width="24" height="24" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_20_1908)">
+            <path d="M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z" fill="#828282"/>
+          </g>
+        </svg>
+        Подстанции
+      </button>
+      <span>></span>
+      <span>ТЭЦ ПГУ ГСР Энерго</span>
+    </div>
+
+    <button class="save__button center">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 3.425V14.375C16 14.8417 15.846 15.2293 15.538 15.538C15.2293 15.846 14.8417 16 14.375 16H1.625C1.15833 16 0.771 15.846 0.463 15.538C0.154333 15.2293 0 14.8417 0 14.375V1.625C0 1.15833 0.154333 0.771 0.463 0.463C0.771 0.154333 1.15833 0 1.625 0H12.575L16 3.425ZM15 3.85L12.15 1H1.625C1.44167 1 1.29167 1.05833 1.175 1.175C1.05833 1.29167 1 1.44167 1 1.625V14.375C1 14.5583 1.05833 14.7083 1.175 14.825C1.29167 14.9417 1.44167 15 1.625 15H14.375C14.5583 15 14.7083 14.9417 14.825 14.825C14.9417 14.7083 15 14.5583 15 14.375V3.85ZM8 12.55C8.55 12.55 9.021 12.3543 9.413 11.963C9.80433 11.571 10 11.1 10 10.55C10 9.98333 9.80433 9.50833 9.413 9.125C9.021 8.74167 8.55 8.55 8 8.55C7.45 8.55 6.97933 8.74167 6.588 9.125C6.196 9.50833 6 9.98333 6 10.55C6 11.1 6.196 11.571 6.588 11.963C6.97933 12.3543 7.45 12.55 8 12.55ZM2.775 5.775H10.2V2.775H2.775V5.775Z" fill="white"/>
+      </svg>
+      Сохранить
+    </button>
+  </header>
+
+  <div class="tabs">
+    <button>
+      Подстанция
+    </button>
+    <button class="active">
+      Оборудование
+    </button>
+  </div>
+
+  <div class="view__button_group">
+    <button class="active">
+      Список
+    </button>
+    <button>
+      Ведомость
+    </button>
+  </div>
+
+  <div class="select__group">
+    <div class="select__wrapper center">
+      <span>Тип</span>
+      <select>
+        <option>Трансформаторы</option>
+        <option>Трансформаторы</option>
+        <option>Трансформаторы</option>
+      </select>
+      <span>РУ</span>
+      <select>
+        <option>110</option>
+        <option>110</option>
+        <option>110</option>
+      </select>
+    </div>
+    <div class="toggle__wrapper center">
+      <div class="toggle">
+        <span class="switch__slider" [ngClass]="{'active': switchIsChecked}" (click)="switchClickHandler()"></span>
+      </div>
+      <span>
+        Схема
+      </span>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Наименование</th>
+      <th>U ном.</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>РТСН\НН-1</td>
+      <td>6</td>
+    </tr>
+    <tr class="active">
+      <td>РТСН\НН-2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>БТ1\НН-2</td>
+      <td>10.5</td>
+    </tr>
+    <tr>
+      <td>БТ1\ВН</td>
+      <td>110</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

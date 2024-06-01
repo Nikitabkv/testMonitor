@@ -1,4 +1,17 @@
 .sections__wrapper {
   display: flex;
   height: 850px;
+  width: 100%;
+}
+
+section {
+  width: 50%;
+  height: 100%;
+  padding: 17px 30px;
+}
+
+.divider {
+  flex-direction: column;
+  width: 11px;
+  background-color: #F2F2F2;
 }
