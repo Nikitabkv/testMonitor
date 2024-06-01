@@ -79,6 +79,7 @@ header {
 
 .select__group select {
   border: 1px solid #DEE2E6;
+  cursor: pointer;
   border-radius: 4px;
   padding: 8px 12px;
   max-height: 38px;
