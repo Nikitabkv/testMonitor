@@ -3,7 +3,7 @@
   <app-header/>
   <div
     class="sections__wrapper"
-    (mousedown)="startResize($event)" (mousemove)="resize($event)" (mouseup)="endResize()"
+    (mousedown)="startResize($event)" (mousemove)="resize($event)" (mouseup)="endResize($event)"
   >
     <section [style.width.px]="section1Width">
       <app-substations/>
