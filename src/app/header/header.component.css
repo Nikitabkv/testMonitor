@@ -9,7 +9,7 @@ header {
 }
 
 .logo {
-  flex: 1 1 133px
+  flex: 1 1 102px
 }
 
 .title {
@@ -21,7 +21,7 @@ header {
 
 .nav__wrapper {
   padding-left: 86px;
-  flex: 1 1 1366px;
+  flex: 1 1 1396px;
 }
 
 @media screen and (max-width: 1400px) {
@@ -57,7 +57,7 @@ nav {
 .buttons__wrapper {
   display: flex;
   justify-content: end;
-  flex: 1 1 143px;
+  flex: 1 1 83px;
 }
 
 .buttons__group {
