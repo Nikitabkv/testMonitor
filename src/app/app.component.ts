@@ -42,10 +42,8 @@ export class AppComponent {
       const newWidth = this.startWidth + offsetX;
       const newNextWidth = this.nextWidth - offsetX;
 
-      if (newWidth > 0 && newNextWidth > 0) {
-        this.section1Width = newWidth;
-        this.section2Width = newNextWidth;
-      }
+      this.section1Width = newWidth;
+      this.section2Width = newNextWidth;
     }
   }
 
