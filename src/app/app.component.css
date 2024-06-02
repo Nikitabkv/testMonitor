@@ -1,6 +1,6 @@
 .sections__wrapper {
   display: flex;
-  height: 850px;
+  flex-grow: 1;
   width: 100%;
 }
 

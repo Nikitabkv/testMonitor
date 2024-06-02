@@ -1,0 +1,10 @@
+footer {
+  height: 37px;
+  background-color: #005baa;
+  color: white;
+}
+
+span {
+  padding-left: 30px;
+  line-height: 37px;
+}
