@@ -5,13 +5,14 @@
 }
 
 section {
-  width: 50%;
-  height: 100%;
+  flex-grow: 1;
   padding: 17px 30px;
+  overflow-x: auto;
 }
 
 .divider {
   flex-direction: column;
   width: 11px;
   background-color: #F2F2F2;
+  cursor: col-resize;
 }
