@@ -25,11 +25,13 @@ export class AppComponent {
   @HostListener('mousedown', ['$event'])
   @HostListener('touchstart', ['$event'])
   startResize(event: MouseEvent | TouchEvent) {
-    document.body.style.userSelect = 'none';
-    this.isResizing = true;
-    this.startX = (event as TouchEvent).touches ? (event as TouchEvent).touches[0].pageX : (event as MouseEvent).pageX;
-    this.startWidth = this.section1Width;
-    this.nextWidth = this.section2Width;
+    if (event.target instanceof HTMLElement && event.target.classList.contains('divider')) {
+      document.body.style.userSelect = 'none';
+      this.isResizing = true;
+      this.startX = (event as TouchEvent).touches ? (event as TouchEvent).touches[0].pageX : (event as MouseEvent).pageX;
+      this.startWidth = this.section1Width;
+      this.nextWidth = this.section2Width;
+    }
   }
 
   @HostListener('mousemove', ['$event'])
@@ -49,7 +51,7 @@ export class AppComponent {
 
   @HostListener('mouseup', ['$event'])
   @HostListener('touchend', ['$event'])
-  endResize(event: MouseEvent | TouchEvent) {
+  endResize() {
     this.isResizing = false;
     document.body.style.userSelect = 'auto';
   }
