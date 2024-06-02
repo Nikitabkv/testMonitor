@@ -1,0 +1,158 @@
+.metering {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 22px;
+  height: 38px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.control__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.control__buttons button {
+  gap: 8px;
+  font-size: 14px;
+  padding: 6px 12px;
+  border: 1px solid #005BAA;
+  border-radius: 4px;
+  color: #005baa;
+  font-family: 'Roboto', sans-serif;
+}
+
+.view__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.view__buttons button {
+  padding: 3px 8px;
+}
+
+.view__buttons button.active {
+  background-color: #F2F2F2;
+  color: white;
+}
+
+.table__view__button:first-child {
+  border-right: 1px solid #CED4DA;
+}
+
+.buttons__group {
+  display: flex;
+  border: 1px solid #CED4DA;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fullscreen__button {
+  border: 1px solid #CED4DA;
+  border-radius: 4px;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checked__results {
+  color: #005baa;
+}
+
+.checked__results.is__empty {
+  color: red;
+}
+
+.toggle__wrapper {
+  gap: 10px;
+}
+
+.toggle {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 16px;
+}
+
+.switch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+  bottom: 0;
+  border: 1px solid #00426947;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.switch__slider.active {
+  background-color: #005baa;
+}
+
+.switch__slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 1px;
+  bottom: 1px;
+  border-radius: 50%;
+  background-color: #00426947;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.switch__slider.active:before {
+  background-color: white;
+  -webkit-transform: translateX(14px);
+  -ms-transform: translateX(14px);
+  transform: translateX(14px);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td:first-child, th:first-child  {
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.add_button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 21px;
+  font-size: 16px;
+  color: #005baa;
+}

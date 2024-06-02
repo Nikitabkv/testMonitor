@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 @font-face {
   font-family: 'Segoe UI';
   src: url('../public/SegoeUI.ttf') format('ttf');
@@ -22,7 +24,15 @@ body {
 }
 
 button {
+  font-family: 'Segoe UI', sans-serif;
   cursor: pointer;
   border: none;
   background: none;
+}
+
+@media screen and (max-width: 1400px) {
+  th, td {
+    padding: 4px !important;
+    font-size: 12px;
+  }
 }

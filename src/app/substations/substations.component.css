@@ -21,6 +21,7 @@ header {
   border-radius: 4px;
   padding: 6px 12px;
   gap: 8px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .save__button {
@@ -30,6 +31,7 @@ header {
   padding: 9px 12px;
   gap: 8px;
   max-height: 38px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .tabs {
