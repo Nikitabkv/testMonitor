@@ -16,12 +16,17 @@ header {
   gap: 10px;
 }
 
+.substation__name {
+  font-size: 22px;
+}
+
 .burger {
   border: 1px solid #E0E0E0;
   border-radius: 4px;
   padding: 6px 12px;
   gap: 8px;
   font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
 .save__button {
@@ -42,6 +47,7 @@ header {
 .tabs button {
   color: #005BAA;
   padding: 8px 12px;
+  font-size: 16px;
 }
 
 .tabs button.active {
@@ -62,6 +68,7 @@ header {
 .view__button_group button {
   flex: 1;
   padding: 8px 12px;
+  font-size: 16px;
 }
 
 .view__button_group button:first-child {
@@ -77,19 +84,36 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+}
+
+.select__container {
+  padding: 8px 12px;
+  border: 1px solid #DEE2E6;
+  border-radius: 4px;
+}
+
+.transformer {
+  flex-basis: 233px;
+}
+
+.ru {
+  flex-basis: 91px;
 }
 
 .select__group select {
-  border: 1px solid #DEE2E6;
+  border: none;
   cursor: pointer;
-  border-radius: 4px;
-  padding: 8px 12px;
   max-height: 38px;
+  font-size: 14px;
+  width: 100%;
 }
 
 .select__wrapper {
   display: flex;
   gap: 10px;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .toggle__wrapper {

@@ -1,8 +1,8 @@
 header {
+  padding: 0 30px;
   display: flex;
   align-items: center;
   background-color: #005baa;
-  gap: 10px;
   color: white;
 
   height: 80px;
@@ -20,8 +20,14 @@ header {
 }
 
 .nav__wrapper {
-  padding-left: 4%;
+  padding-left: 86px;
   flex: 1 1 1366px;
+}
+
+@media screen and (max-width: 1400px) {
+  .nav__wrapper {
+    padding-left: 21px;
+  }
 }
 
 nav {
@@ -49,6 +55,8 @@ nav {
 }
 
 .buttons__wrapper {
+  display: flex;
+  justify-content: end;
   flex: 1 1 143px;
 }
 
@@ -61,7 +69,7 @@ nav {
 .buttons__wrapper button {
   border-right: 1px solid #BDBDBD;
   width: 100%;
-  padding: 8px 6px;
+  padding: 6px 8px;
 }
 
 .buttons__wrapper button.active {

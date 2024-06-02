@@ -131,9 +131,14 @@ table {
   border-collapse: collapse;
 }
 
+.table__checkbox {
+  width: 20px;
+  height: 20px;
+}
+
 th, td {
   text-align: left;
-  padding: 8px;
+  padding: 7px 8px;
   border: 1px solid #ddd;
   white-space: nowrap;
   overflow: hidden;
@@ -141,7 +146,15 @@ th, td {
 }
 
 td:first-child, th:first-child  {
+  display: table-cell;
   text-align: center;
+  width: 36px;
+}
+
+.table__checkbox {
+  padding-block: 0;
+  padding-inline: 0;
+  vertical-align: middle;
 }
 
 th {
@@ -153,6 +166,8 @@ th {
   align-items: center;
   gap: 12px;
   height: 21px;
+  padding: 0;
+  padding-left: 3px;
   font-size: 16px;
   color: #005baa;
 }
