@@ -4,7 +4,7 @@
     <span>РТСН\НН-2</span>
   </div>
 
-  <div class="controls">
+  <div class="controls" *ngIf="data">
     <div class="line">
       <div class="control__buttons">
         <button class="center">
@@ -96,11 +96,12 @@
     </div>
   </div>
 
-  <table>
+
+  <table *ngIf="data">
     <thead>
     <tr>
       <th>
-        <input class="table__checkbox" type="checkbox">
+        <input class="table__checkbox" type="checkbox" (click)="onSelectAll()">
       </th>
       <th>Дата</th>
       <th>Время</th>
@@ -124,89 +125,19 @@
         </button>
       </td>
     </tr>
-    <tr>
+    <tr *ngFor="let item of data" [ngClass]="{'active': checkedItemsIds.includes(item.id)}">
       <td>
-        <input class="table__checkbox" type="checkbox">
+        <input class="table__checkbox" type="checkbox" [(ngModel)]="item.checked" (click)="onChangeInput(item.id)">
       </td>
-      <td>30.07.2022</td>
-      <td>10:15:23</td>
-      <td>Оператор</td>
-      <td>—</td>
-      <td>1</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-    </tr>
-    <tr>
-      <td>
-        <input class="table__checkbox" type="checkbox">
-      </td>
-      <td>30.07.2022</td>
-      <td>10:15:23</td>
-      <td>Оператор</td>
-      <td>—</td>
-      <td>1</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-    </tr>
-    <tr>
-      <td>
-        <input class="table__checkbox" type="checkbox">
-      </td>
-      <td>30.07.2022</td>
-      <td>10:15:23</td>
-      <td>Оператор</td>
-      <td>—</td>
-      <td>1</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-    </tr>
-    <tr>
-      <td>
-        <input class="table__checkbox" type="checkbox">
-      </td>
-      <td>30.07.2022</td>
-      <td>10:15:23</td>
-      <td>Оператор</td>
-      <td>—</td>
-      <td>1</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-    </tr>
-    <tr>
-      <td>
-        <input class="table__checkbox" type="checkbox">
-      </td>
-      <td>30.07.2022</td>
-      <td>10:15:23</td>
-      <td>Оператор</td>
-      <td>—</td>
-      <td>1</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-    </tr>
-    <tr>
-      <td>
-        <input class="table__checkbox" type="checkbox">
-      </td>
-      <td>30.07.2022</td>
-      <td>10:15:23</td>
-      <td>Оператор</td>
-      <td>—</td>
-      <td>1</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
-      <td>0.63</td>
+      <td>{{item.date}}</td>
+      <td>{{item.time}}</td>
+      <td>{{item.source}}</td>
+      <td>{{item.phase}}</td>
+      <td>{{item.kb}}</td>
+      <td>{{item.a}}</td>
+      <td>{{item.mvt}}</td>
+      <td>{{item.mvar}}</td>
+      <td>{{item.cos}}</td>
     </tr>
     </tbody>
   </table>

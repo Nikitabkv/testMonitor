@@ -4,13 +4,14 @@ import {HeaderComponent} from "./header/header.component";
 import {SubstationsComponent} from "./substations/substations.component";
 import {MeteringComponent} from "./metering/metering.component";
 import {FooterComponent} from "./footer/footer.component";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, SubstationsComponent, MeteringComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'testMonitor';

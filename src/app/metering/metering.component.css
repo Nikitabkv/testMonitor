@@ -146,6 +146,10 @@ th, td {
   text-overflow: ellipsis;
 }
 
+tr.active td {
+  background-color: #005BAA1A;
+}
+
 td:first-child, th:first-child  {
   display: table-cell;
   text-align: center;
