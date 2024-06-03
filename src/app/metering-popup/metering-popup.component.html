@@ -1,0 +1,46 @@
+<div *ngIf="isActive" class="monitorPopup">
+  <div class="header">
+    <span>Редактировать</span>
+    <button class="center">X</button>
+  </div>
+  <form [formGroup]="monitorFormGroup">
+    <label>
+      <span>Дата и время:</span>
+      <input type="datetime-local" formControlName="dateTime">
+    </label>
+    <label>
+      <span>Источник:</span>
+      <select formControlName="deviceType">
+      <option value="Оператор">Оператор</option>
+      <option value="scada">SCADA</option>
+      <option value="askue">АСКУЭ</option>
+      <option value="registrator">Регистратор</option>
+    </select>
+    </label>
+    <label>
+      <span>Фаза:</span>
+      <input type="text" formControlName="deviceName">
+    </label>
+    <label>
+      <span>U, kB:</span>
+      <input type="number" step="0.1" formControlName="value1">
+    </label>
+    <label>
+      <span>I, A:</span>
+      <input type="number" step="0.1" formControlName="value2">
+    </label>
+    <label>
+      <span>P, MBt:</span>
+      <input type="number" step="0.1" formControlName="value3">
+    </label>
+    <label>
+      <span>Q, Мвар:</span>
+      <input type="number" step="0.1" formControlName="value4">
+    </label>
+    <label>
+      <span>cos φ:</span>
+      <input type="number" step="0.1" formControlName="value5">
+    </label>
+    <button type="button" class="save__button" (click)="onSave()">Сохранить</button>
+  </form>
+</div>

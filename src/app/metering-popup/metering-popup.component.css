@@ -1,0 +1,76 @@
+.monitorPopup {
+  position: absolute;
+  min-height: 300px;
+  min-width: 600px;
+  top: 50%;
+  left: 50%;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  z-index: 1000;
+  border: 2px solid #005BAA;
+}
+
+.header {
+  font-size: 22px;
+  line-height: 22px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #005BAA;
+  color: white;
+  padding: 10px;
+}
+
+.header button {
+  background-color: white;
+  border-radius: 4px;
+  width: 25px;
+  height: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.header button:hover {
+  background-color: #e3ecf4;
+}
+
+form {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+label span {
+  width: 20%;
+}
+
+input, select {
+  border: 1px solid #005BAA;
+  flex-grow: 1;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: white;
+}
+
+.save__button {
+  width: 100%;
+  background-color: #005BAA;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.save__button:hover {
+  background-color: #004f94;
+}

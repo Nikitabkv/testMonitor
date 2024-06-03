@@ -26,6 +26,12 @@ header {
   font-size: 22px;
 }
 
+@media screen and (max-width: 1400px) {
+  .substation__name {
+    font-size: 16px;
+  }
+}
+
 .burger {
   border: 1px solid #E0E0E0;
   border-radius: 4px;
@@ -203,4 +209,10 @@ th, td {
 
 th {
   background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 1400px) {
+  button {
+    font-size: 14px !important;
+  }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {DataService} from "../services/data.service";
 import {FormsModule} from "@angular/forms";
+import {MeteringPopupComponent} from "../metering-popup/metering-popup.component";
 
 @Component({
   selector: 'app-metering',
@@ -11,7 +12,8 @@ import {FormsModule} from "@angular/forms";
     NgClass,
     NgForOf,
     NgIf,
-    FormsModule
+    FormsModule,
+    MeteringPopupComponent
   ],
   templateUrl: './metering.component.html',
   styleUrl: './metering.component.css'
