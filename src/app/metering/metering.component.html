@@ -24,7 +24,7 @@
           </svg>
           Отменить проверку
         </button>
-        <button class="center">
+        <button *ngIf="checkedItemsIds.length === 1" class="center" (click)="editHandler()">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <mask id="mask0_20_1724" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
               <rect width="20" height="20" fill="#D9D9D9"/>
@@ -33,10 +33,9 @@
               <path d="M4.16667 15.8336H5.33333L12.5208 8.64607L11.3542 7.4794L4.16667 14.6669V15.8336ZM16.0833 7.43773L12.5417 3.93773L13.7083 2.77107C14.0278 2.45162 14.4203 2.2919 14.8858 2.2919C15.3508 2.2919 15.7431 2.45162 16.0625 2.77107L17.2292 3.93773C17.5486 4.25718 17.7153 4.64273 17.7292 5.0944C17.7431 5.54551 17.5903 5.93079 17.2708 6.25023L16.0833 7.43773ZM14.875 8.6669L6.04167 17.5002H2.5V13.9586L11.3333 5.12523L14.875 8.6669Z" fill="#005BAA"/>
             </g>
           </svg>
-
           Редактировать
         </button>
-        <button class="center">
+        <button class="center" (click)="deleteHandler()">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <mask id="mask0_20_1729" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
               <rect width="20" height="20" fill="#D9D9D9"/>
@@ -117,7 +116,7 @@
     <tbody>
     <tr>
       <td colspan="10">
-        <button class="add_button">
+        <button class="add_button" (click)="addNewHandler()">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#005BAA"/>
           </svg>
@@ -142,5 +141,11 @@
     </tbody>
   </table>
 
-  <app-metering-popup />
+  <app-metering-popup
+    [popUpIsActive]="popUpIsActive"
+    [mode]="popUpMode"
+    [data]="getCurrentDataById(checkedItemsIds[0])"
+    [id]="checkedItemsIds[0]"
+    (popUpIsActiveChange)="onPopUpIsActiveChange($event)"
+  />
 </div>

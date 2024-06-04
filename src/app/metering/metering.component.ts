@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {DataService} from "../services/data.service";
 import {FormsModule} from "@angular/forms";
@@ -20,10 +20,13 @@ import {MeteringPopupComponent} from "../metering-popup/metering-popup.component
 })
 export class MeteringComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private changeDetectorRef: ChangeDetectorRef) {}
 
-  public switchIsChecked = false;
-  public checkedResults = 0;
+  popUpIsActive = false;
+  popUpMode = 'add';
+
+  switchIsChecked = false;
+  checkedResults = 0;
 
   public switchClickHandler() {
     this.switchIsChecked = !this.switchIsChecked;
@@ -51,8 +54,43 @@ export class MeteringComponent implements OnInit {
     }
   }
 
+  getCurrentDataById(id: number) {
+    if (!this.data) {
+      return;
+    }
+    return this.data.find((item: any) => item.id === id);
+  }
+
+  addNewHandler() {
+    this.popUpMode = 'add';
+    this.popUpIsActive = true
+  }
+
+  editHandler() {
+    this.popUpMode = 'edit';
+    this.popUpIsActive = true
+  }
+
+  registerDataChangeCallback() {
+    this.dataService.registerDataChangeCallback((newData) => {
+      this.data = newData;
+      this.changeDetectorRef.detectChanges();
+    });
+  }
+
+  deleteHandler() {
+    const selectedIds = this.checkedItemsIds; // Получение выбранных ID
+    this.dataService.deleteItems(selectedIds);
+  }
+
+  onPopUpIsActiveChange(isActive: boolean) {
+    this.popUpIsActive = isActive;
+    this.checkedItemsIds = [];
+  }
+
   ngOnInit(): void {
     this.fetchData();
+    this.registerDataChangeCallback();
   }
 
   fetchData() {
@@ -74,6 +112,7 @@ export class MeteringComponent implements OnInit {
             checked: false
           }
         });
+        this.dataService.setData(this.data);
       });
   }
 }

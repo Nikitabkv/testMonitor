@@ -1,7 +1,7 @@
-import {Component, Input, Output, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {DataService} from "../services/data.service";
 import {NgIf} from "@angular/common";
-import {HttpClient} from "@angular/common/http";
 
 interface MeteringData {
   dateTime: string;
@@ -12,6 +12,7 @@ interface MeteringData {
   value3: number;
   value4: number;
   value5: number;
+  checked: boolean;
 }
 
 @Component({
@@ -24,34 +25,80 @@ interface MeteringData {
   templateUrl: './metering-popup.component.html',
   styleUrl: './metering-popup.component.css'
 })
-export class MeteringPopupComponent{
-  @Input() isActive: boolean = true;
+export class MeteringPopupComponent implements OnChanges {
+  @Input() popUpIsActive!: boolean;
+  @Input() mode!: string;
+  @Input() data?: any;
+  @Input() id?: any;
+
+  @Output() popUpIsActiveChange = new EventEmitter<boolean>();
 
   monitorFormGroup: FormGroup;
 
-  constructor(private http: HttpClient) {
+  constructor(private dataService: DataService, private changeDetectorRef: ChangeDetectorRef) {
     this.monitorFormGroup = new FormGroup({
-      dateTime: new FormControl(),
-      deviceType: new FormControl(''),
-      deviceName: new FormControl(''),
-      value1: new FormControl(0),
-      value2: new FormControl(0),
-      value3: new FormControl(0),
-      value4: new FormControl(0),
-      value5: new FormControl(0)
+      id: new FormControl(new Date().getTime()),
+      date: new FormControl(new Date().toISOString().split('T')[0]),
+      time: new FormControl(),
+      source: new FormControl(''),
+      phase: new FormControl(''),
+      kb: new FormControl(),
+      a: new FormControl(),
+      mvt: new FormControl(),
+      mvar: new FormControl(),
+      cos: new FormControl(),
     });
   }
 
+  formatDate(originalDate: string) {
+    const [day, month, year] = originalDate.split(".");
+    const correctDate = new Date(`${+year}-${+month}-${+day}`);
+    correctDate.setHours(3, 3, 3, 3);
+    return correctDate.toISOString().split('T')[0]
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'] || changes['mode'] || changes['id']) {
+      if (this.mode === 'edit' && this.data) {
+        this.monitorFormGroup = new FormGroup({
+          id: new FormControl(this.data.id),
+          date: new FormControl(this.formatDate(this.data.date)),
+          time: new FormControl(this.data.time),
+          source: new FormControl(this.data.source),
+          phase: new FormControl(this.data.phase),
+          kb: new FormControl(this.data.kb),
+          a: new FormControl(this.data.a),
+          mvt: new FormControl(this.data.mvt),
+          mvar: new FormControl(this.data.mvar),
+          cos: new FormControl(this.data.cos),
+        });
+      }
+    }
+  }
+
+  closeHandler() {
+    this.popUpIsActive = false;
+    this.popUpIsActiveChange.emit(this.popUpIsActive);
+    this.dataService.disableItems();
+    this.resetForm();
+  }
+
   onSave() {
-    console.log(this.monitorFormGroup ? this.monitorFormGroup.value : 'пока пусто');
+    if (this.mode === 'edit') {
+      this.monitorFormGroup.value.id = this.id;
+      this.dataService.editItem(this.monitorFormGroup.value);
+    } else {
+      this.dataService.addData(this.monitorFormGroup.value);
+    }
+    this.popUpIsActive = false;
+    this.popUpIsActiveChange.emit(this.popUpIsActive);
+    this.dataService.disableItems();
+    this.resetForm();
+  }
 
-    const data: MeteringData = this.monitorFormGroup.value;
-
-    this.http.put('https://angdev.ru/angular', data)
-      .subscribe(response => {
-        console.log('Данные успешно отправлены на сервер:', response);
-      }, error => {
-        console.error('Ошибка при отправке данных:', error);
-      });
+  resetForm() {
+    this.monitorFormGroup.reset({
+      id: new Date().getTime()
+    });
   }
 }
