@@ -16,7 +16,7 @@ export class DataService {
   }
 
   getData() {
-    return this.http.get('https://api.jsonbin.io/v3/b/665ccdd2ad19ca34f87345ad');
+    return this.http.get('https://api.jsonbin.io/v3/b/66602f8ee41b4d34e4fec79d');
   }
 
   setData(data: any) {
