@@ -98,7 +98,8 @@ export class MeteringPopupComponent implements OnChanges {
 
   resetForm() {
     this.monitorFormGroup.reset({
-      id: new Date().getTime()
+      id: new Date().getTime(),
+      date: new Date().toISOString().split('T')[0]
     });
   }
 }

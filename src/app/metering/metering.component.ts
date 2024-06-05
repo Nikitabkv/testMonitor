@@ -81,6 +81,7 @@ export class MeteringComponent implements OnInit {
   deleteHandler() {
     const selectedIds = this.checkedItemsIds; // Получение выбранных ID
     this.dataService.deleteItems(selectedIds);
+    this.checkedItemsIds = [];
   }
 
   onPopUpIsActiveChange(isActive: boolean) {
