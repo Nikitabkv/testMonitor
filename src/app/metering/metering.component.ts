@@ -64,6 +64,8 @@ export class MeteringComponent implements OnInit {
   addNewHandler() {
     this.popUpMode = 'add';
     this.popUpIsActive = true
+    this.dataService.disableItems();
+    this.checkedItemsIds = [];
   }
 
   editHandler() {
