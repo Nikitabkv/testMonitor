@@ -40,7 +40,7 @@ export class DataService {
   addData(data: MeteringItem) {
     data.date = this.formatDate(data.date);
     data.checked = false;
-    this.data.push(data);
+    this.data.unshift(data);
   }
 
   editItem(item: MeteringItem) {
