@@ -1,6 +1,6 @@
 <div *ngIf="popUpIsActive" class="monitorPopup">
   <div class="header">
-    <span>Редактировать</span>
+    <span>{{mode === 'edit' ? 'Редактировать' : 'Добавить'}} замеры</span>
     <button class="center" (click)="closeHandler()">X</button>
   </div>
   <form [formGroup]="monitorFormGroup">
