@@ -3,15 +3,17 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {DataService} from "../services/data.service";
 import {NgIf} from "@angular/common";
 
-interface MeteringData {
-  dateTime: string;
-  deviceType: string;
-  deviceName: string;
-  value1: number;
-  value2: number;
-  value3: number;
-  value4: number;
-  value5: number;
+interface MeteringItem {
+  id: number;
+  date: string;
+  time: string;
+  source: string;
+  phase: string;
+  kb: string;
+  a: string;
+  mvt: string;
+  mvar: string;
+  cos: string;
   checked: boolean;
 }
 
@@ -28,8 +30,8 @@ interface MeteringData {
 export class MeteringPopupComponent implements OnChanges {
   @Input() popUpIsActive!: boolean;
   @Input() mode!: string;
-  @Input() data?: any;
-  @Input() id?: any;
+  @Input() data?: MeteringItem;
+  @Input() id?: number;
 
   @Output() popUpIsActiveChange = new EventEmitter<boolean>();
 

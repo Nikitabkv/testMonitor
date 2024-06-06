@@ -4,6 +4,20 @@ import {DataService} from "../services/data.service";
 import {FormsModule} from "@angular/forms";
 import {MeteringPopupComponent} from "../metering-popup/metering-popup.component";
 
+interface MeteringItem {
+  id: number;
+  date: string;
+  time: string;
+  source: string;
+  phase: string;
+  kb: string;
+  a: string;
+  mvt: string;
+  mvar: string;
+  cos: string;
+  checked: boolean;
+}
+
 @Component({
   selector: 'app-metering',
   standalone: true,
@@ -32,10 +46,10 @@ export class MeteringComponent implements OnInit {
     this.switchIsChecked = !this.switchIsChecked;
   }
 
-  data?: any;
+  data: MeteringItem[] = [];
   checkedItemsIds: Array<number> = [];
 
-  onChangeInput(id: any) {
+  onChangeInput(id: number) {
     if (this.checkedItemsIds.includes(id)) {
       const index = this.checkedItemsIds.indexOf(id);
       this.checkedItemsIds.splice(index, 1);
@@ -46,10 +60,10 @@ export class MeteringComponent implements OnInit {
 
   onSelectAll() {
     if (this.checkedItemsIds.length !== this.data.length) {
-      this.data.forEach((item: any) => item.checked = true);
-      this.checkedItemsIds = this.data.map((item: any) => item.id);
+      this.data.forEach((item: MeteringItem) => item.checked = true);
+      this.checkedItemsIds = this.data.map((item: MeteringItem) => item.id);
     } else {
-      this.data.forEach((item: any) => item.checked = false);
+      this.data.forEach((item: MeteringItem) => item.checked = false);
       this.checkedItemsIds = [];
     }
   }
@@ -58,7 +72,7 @@ export class MeteringComponent implements OnInit {
     if (!this.data) {
       return;
     }
-    return this.data.find((item: any) => item.id === id);
+    return this.data.find((item: MeteringItem) => item.id === id);
   }
 
   addNewHandler() {
@@ -74,7 +88,7 @@ export class MeteringComponent implements OnInit {
   }
 
   registerDataChangeCallback() {
-    this.dataService.registerDataChangeCallback((newData) => {
+    this.dataService.registerDataChangeCallback((newData: MeteringItem[]) => {
       this.data = newData;
       this.changeDetectorRef.detectChanges();
     });
@@ -98,9 +112,8 @@ export class MeteringComponent implements OnInit {
 
   fetchData() {
     this.dataService.getData()
-      .subscribe((response) => {
-        // @ts-ignore
-        this.data = response.record.meterings.map((item: any) => {
+      .subscribe((response: any) => {
+        this.data = response.record.meterings.map((item: MeteringItem) => {
           return {
             id: item.id,
             date: item.date,
@@ -115,6 +128,7 @@ export class MeteringComponent implements OnInit {
             checked: false
           }
         });
+        console.log(this.data)
         this.dataService.setData(this.data);
       });
   }
