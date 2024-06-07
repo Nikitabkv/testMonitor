@@ -38,6 +38,7 @@ export class MeteringComponent implements OnInit {
 
   constructor(private dataService: DataService, private changeDetectorRef: ChangeDetectorRef) {}
 
+  allItemsIsSelected = false;
   popUpIsActive = false;
   deletePopupIsActive = false;
   popUpMode = 'add';
@@ -69,6 +70,7 @@ export class MeteringComponent implements OnInit {
       this.data.forEach((item: MeteringItem) => item.checked = false);
       this.checkedItemsIds = [];
     }
+    this.allItemsIsSelected = !this.allItemsIsSelected
   }
 
   getCurrentDataById(id: number) {
@@ -98,7 +100,9 @@ export class MeteringComponent implements OnInit {
   }
 
   deleteHandler() {
-    this.deletePopupIsActive = true
+    if (this.checkedItemsIds.length > 0) {
+      this.deletePopupIsActive = true
+    }
   }
 
   onPopUpIsActiveChange(isActive: boolean) {
@@ -109,6 +113,7 @@ export class MeteringComponent implements OnInit {
   onDeletePopupIsActiveChange(isActive: boolean) {
     this.deletePopupIsActive = isActive;
     this.dataService.disableItems();
+    this.allItemsIsSelected = false;
     this.checkedItemsIds = [];
   }
 

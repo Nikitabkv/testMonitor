@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {DataService} from "../services/data.service";
 
@@ -20,6 +20,11 @@ export class ConfirmPopupComponent {
   constructor(private dataService: DataService) {}
 
   closeHandler() {
+    this.deletePopupIsActive = false;
+    this.deletePopupIsActiveChange.emit(this.deletePopupIsActive);
+  }
+
+  @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
     this.deletePopupIsActive = false;
     this.deletePopupIsActiveChange.emit(this.deletePopupIsActive);
   }

@@ -1,5 +1,14 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges
+} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DataService} from "../services/data.service";
 import {NgIf} from "@angular/common";
 
@@ -49,7 +58,7 @@ export class MeteringPopupComponent implements OnChanges {
       id: new FormControl(this.currentDateTime.getTime()),
       date: new FormControl(this.currentDateTime.toISOString().split('T')[0]),
       time: new FormControl(this.currentDateTime.toISOString().slice(11, 19)),
-      source: new FormControl(''),
+      source: new FormControl('', [Validators.required]),
       phase: new FormControl({value: 'a', disabled: true}),
       kb: new FormControl({ value: this.getRandomNumber(1, 1.6, 1), disabled: true}),
       a: new FormControl({ value: this.getRandomNumber(0.4, 0.8, 1), disabled: true}),
@@ -73,7 +82,7 @@ export class MeteringPopupComponent implements OnChanges {
           id: new FormControl(this.data.id),
           date: new FormControl(this.formatDate(this.data.date)),
           time: new FormControl(this.data.time),
-          source: new FormControl(this.data.source),
+          source: new FormControl(this.data.source, [Validators.required]),
           phase: new FormControl({value: this.data.phase, disabled: true}),
           kb: new FormControl({value: this.data.kb, disabled: true}),
           a: new FormControl({value: this.data.a, disabled: true}),
@@ -92,7 +101,15 @@ export class MeteringPopupComponent implements OnChanges {
     this.resetForm();
   }
 
+  @HostListener('document:keydown.escape', ['$event']) onKeydownHandler() {
+    this.closeHandler();
+  }
+
   onSave() {
+    if (this.monitorFormGroup.invalid) {
+      alert('Пожалуйста выберите источник')
+      return;
+    }
     if (this.mode === 'edit') {
       this.monitorFormGroup.value.id = this.id;
       this.dataService.editItem(this.monitorFormGroup.getRawValue());

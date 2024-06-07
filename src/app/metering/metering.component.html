@@ -100,7 +100,11 @@
     <thead>
     <tr>
       <th>
-        <input class="table__checkbox" type="checkbox" (click)="onSelectAll()">
+        <button class="table__checkbox" [ngClass]="{'active': allItemsIsSelected}" (click)="onSelectAll()">
+          <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.44524 4.51051L0.159668 6.0426L4.37291 9.57793L10.8008 1.91749L9.2687 0.631915L4.1264 6.76027L1.44524 4.51051Z" fill="white"/>
+          </svg>
+        </button>
       </th>
       <th>Дата</th>
       <th>Время</th>
@@ -126,7 +130,11 @@
     </tr>
     <tr *ngFor="let item of data" [ngClass]="{'active': checkedItemsIds.includes(item.id)}">
       <td>
-        <input class="table__checkbox" type="checkbox" [(ngModel)]="item.checked" (click)="onChangeInput(item.id)">
+        <button class="table__checkbox" [ngClass]="{'active': checkedItemsIds.includes(item.id)}" (click)="onChangeInput(item.id)">
+          <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.44524 4.51051L0.159668 6.0426L4.37291 9.57793L10.8008 1.91749L9.2687 0.631915L4.1264 6.76027L1.44524 4.51051Z" fill="white"/>
+          </svg>
+        </button>
       </td>
       <td>{{item.date}}</td>
       <td>{{item.time}}</td>
