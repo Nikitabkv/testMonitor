@@ -1,0 +1,7 @@
+<div *ngIf="deletePopupIsActive" class="center confirm">
+  Подтвердите удаление
+  <div class="buttons__wrapper">
+    <button (click)="confirmHandler()">Подтверждаю</button>
+    <button (click)="closeHandler()">Закрыть</button>
+  </div>
+</div>

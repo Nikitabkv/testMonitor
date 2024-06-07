@@ -148,4 +148,9 @@
     [id]="checkedItemsIds[0]"
     (popUpIsActiveChange)="onPopUpIsActiveChange($event)"
   />
+  <app-confirm-popup
+    [deletePopupIsActive]="deletePopupIsActive"
+    [checkedItemsIds]="checkedItemsIds"
+    (deletePopupIsActiveChange)="onDeletePopupIsActiveChange($event)"
+  />
 </div>

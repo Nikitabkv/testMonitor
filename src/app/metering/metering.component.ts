@@ -3,6 +3,7 @@ import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {DataService} from "../services/data.service";
 import {FormsModule} from "@angular/forms";
 import {MeteringPopupComponent} from "../metering-popup/metering-popup.component";
+import {ConfirmPopupComponent} from "../confirm-popup/confirm-popup.component";
 
 interface MeteringItem {
   id: number;
@@ -27,7 +28,8 @@ interface MeteringItem {
     NgForOf,
     NgIf,
     FormsModule,
-    MeteringPopupComponent
+    MeteringPopupComponent,
+    ConfirmPopupComponent
   ],
   templateUrl: './metering.component.html',
   styleUrl: './metering.component.css'
@@ -37,6 +39,7 @@ export class MeteringComponent implements OnInit {
   constructor(private dataService: DataService, private changeDetectorRef: ChangeDetectorRef) {}
 
   popUpIsActive = false;
+  deletePopupIsActive = false;
   popUpMode = 'add';
 
   switchIsChecked = false;
@@ -95,13 +98,17 @@ export class MeteringComponent implements OnInit {
   }
 
   deleteHandler() {
-    const selectedIds = this.checkedItemsIds; // Получение выбранных ID
-    this.dataService.deleteItems(selectedIds);
-    this.checkedItemsIds = [];
+    this.deletePopupIsActive = true
   }
 
   onPopUpIsActiveChange(isActive: boolean) {
     this.popUpIsActive = isActive;
+    this.checkedItemsIds = [];
+  }
+
+  onDeletePopupIsActiveChange(isActive: boolean) {
+    this.deletePopupIsActive = isActive;
+    this.dataService.disableItems();
     this.checkedItemsIds = [];
   }
 
