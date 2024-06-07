@@ -4,7 +4,6 @@ import {HeaderComponent} from "./header/header.component";
 import {SubstationsComponent} from "./substations/substations.component";
 import {MeteringComponent} from "./metering/metering.component";
 import {FooterComponent} from "./footer/footer.component";
-import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -22,6 +21,11 @@ export class AppComponent {
   startX = 0;
   startWidth = 0;
   nextWidth = 0;
+
+  constructor() {
+    this.section1Width = window.innerWidth/2-5;
+    this.section2Width = window.innerWidth/2-5;
+  }
 
   startResize(event: MouseEvent | TouchEvent) {
     event.stopPropagation();
