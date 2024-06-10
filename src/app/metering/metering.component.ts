@@ -119,6 +119,7 @@ export class MeteringComponent implements OnInit {
   onPopUpIsActiveChange(isActive: boolean) {
     this.popUpIsActive = isActive;
     this.checkedItemsIds = [];
+    this.allItemsIsSelected = false
   }
 
   onDeletePopupIsActiveChange(isActive: boolean) {
