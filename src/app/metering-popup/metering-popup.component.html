@@ -27,23 +27,23 @@
     </label>
     <label>
       <span>U, kB:</span>
-      <input type="number" step="0.1" formControlName="kb">
+      <input type="text" formControlName="kb" (input)="numberInputsChangeHandler($event, 'kb')">
     </label>
     <label>
       <span>I, A:</span>
-      <input type="number" step="0.1" formControlName="a">
+      <input type="text" formControlName="a" (input)="numberInputsChangeHandler($event, 'a')">
     </label>
     <label>
       <span>P, MBt:</span>
-      <input type="number" step="0.1" formControlName="mvt">
+      <input type="text" formControlName="mvt" (input)="numberInputsChangeHandler($event, 'mvt')">
     </label>
     <label>
       <span>Q, Мвар:</span>
-      <input type="number" step="0.1" formControlName="mvar">
+      <input type="text" formControlName="mvar" (input)="numberInputsChangeHandler($event, 'mvar')">
     </label>
     <label>
       <span>cos φ:</span>
-      <input type="number" step="0.1" formControlName="cos">
+      <input type="text" formControlName="cos" (input)="numberInputsChangeHandler($event, 'cos')">
     </label>
     <button type="button" class="save__button" (click)="onSave()">Сохранить</button>
   </form>
