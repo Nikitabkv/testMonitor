@@ -60,17 +60,28 @@ export class MeteringComponent implements OnInit {
     } else {
       this.checkedItemsIds.push(id)
     }
+    if (this.checkedItemsIds.length === this.data.length) {
+      this.allItemsIsSelected = true
+    } else {
+      this.allItemsIsSelected = false
+    }
   }
 
   onSelectAll() {
+    console.log('all',this.checkedItemsIds.length)
+    console.log('data',this.data.length)
+    if (this.data.length === 0) {
+      return
+    }
     if (this.checkedItemsIds.length !== this.data.length) {
       this.data.forEach((item: MeteringItem) => item.checked = true);
       this.checkedItemsIds = this.data.map((item: MeteringItem) => item.id);
+      this.allItemsIsSelected = true
     } else {
       this.data.forEach((item: MeteringItem) => item.checked = false);
       this.checkedItemsIds = [];
+      this.allItemsIsSelected = false
     }
-    this.allItemsIsSelected = !this.allItemsIsSelected
   }
 
   getCurrentDataById(id: number) {
